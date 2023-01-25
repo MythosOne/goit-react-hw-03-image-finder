@@ -46,8 +46,8 @@ class SearchForm extends Component {
                     type="text"
                     name="query"
                     onChange={this.handleSearchInput}
-                    autocomplete="off"
-                    autofocus
+                    autoComplete="off"
+                    autoFocus
                     placeholder="Search images and photos"
                 />
             </form>
