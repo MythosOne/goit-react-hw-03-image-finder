@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import styles from './ImageGallery.module.css';
 
-export const ImageGallery = ({ images, onImageClick }) => {
+const ImageGallery = ({ images, onImageClick }) => {
     
         <ul className={styles.ImageGallery}>
             {images.map(image => {

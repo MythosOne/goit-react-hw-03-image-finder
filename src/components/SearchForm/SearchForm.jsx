@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './SearchForm.module.css';
 
 
-export class SearchForm extends Component {
+class SearchForm extends Component {
     state = {
         query: '',
     };
@@ -20,7 +20,7 @@ export class SearchForm extends Component {
         event.preventDefault();
 
         if (!this.state.query) {
-            return
+            return;
         }
 
         this.props.onSearch(this.state.query);

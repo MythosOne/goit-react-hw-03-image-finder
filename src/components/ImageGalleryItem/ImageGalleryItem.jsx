@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ImageGalleryItem.module.css';
 
-export const ImageGalleryItem = ({ image, onImageClick }) => {
+const ImageGalleryItem = ({ image, onImageClick }) => {
     const fullImage = () => onImageClick(image.largeImageURL);
 
     return (

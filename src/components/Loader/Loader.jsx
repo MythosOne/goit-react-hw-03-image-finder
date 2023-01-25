@@ -4,7 +4,7 @@ import styles from './Loader.module.css';
 
 
 
-export class Loader extends Component {
+class Loader extends Component {
 render() {
     return (
         <div className={styles.Loader}>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './IconButton.module.css';
 
-export const IconButton = ({ children, onClick, ...allyProps }) => (
+const IconButton = ({ children, onClick, ...allyProps }) => (
     <button
         type="button"
         className={styles.IconButton}

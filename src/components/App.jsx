@@ -36,7 +36,7 @@ export class App extends Component {
     });
   };
 
-  getImages = async () => {
+  getImages = () => {
     const { page, searchQuery } = this.state;
 
     this.setState({
@@ -44,7 +44,7 @@ export class App extends Component {
     });
 
     try {
-      const { hits } = await apiService(searchQuery, page);
+      const { hits } = apiService(searchQuery, page);
 
       this.setState(prevState => ({
         images: [...prevState.images, ...hits],
@@ -123,9 +123,6 @@ export class App extends Component {
     );
   };
 };
-
-export default App;
-
 
 // key=31642520-d6a6357411a55db3459510987
 // https://pixabay.com/api/?q=cat&page=1&key=31642520-d6a6357411a55db3459510987&image_type=photo&orientation=horizontal&per_page=12

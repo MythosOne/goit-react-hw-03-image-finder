@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Modal = () => {
+const Modal = () => {
     return (
         <div class="overlay">
             <div class="modal">
