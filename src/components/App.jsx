@@ -3,11 +3,14 @@ import apiService from './Api/apiService';
 import Searchbar from './Searchbar/Searchbar';
 import ImageGallery from './ImageGallery/ImageGallery';
 import Button from "./Button/Button";
-// import Modal from './Modal';
-// import Loader from './Loader';
-// import Button from './Button';
+import Modal from './Modal/Modal';
+import Loader from './Loader/Loader';
+import Message from './Message/Message';
+import IconButton from './IconButton/IconButton';
+import { ReactComponent as CloseIcon } from './Icons/cross.svg';
 
 export class App extends Component {
+
   state = {
     images: [],
     page: 1,
@@ -18,10 +21,10 @@ export class App extends Component {
     error: null,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.getImage();
-  }
+    };
   };
   
   onChangeQuery = query => {
@@ -33,7 +36,7 @@ export class App extends Component {
     });
   };
 
-  getImages = () => {
+  getImages = async () => {
     const { page, searchQuery } = this.state;
 
     this.setState({
@@ -41,7 +44,7 @@ export class App extends Component {
     });
 
     try {
-      const { hits } = apiService(searchQuery, page);
+      const { hits } = await apiService(searchQuery, page);
 
       this.setState(prevState => ({
         images: [...prevState.images, ...hits],
@@ -52,7 +55,7 @@ export class App extends Component {
         this.scrollOnLoadButton();
       }
     } catch (error) {
-      console.log('App fetch error', error);
+      console.log('Api fetch error', error);
       this.setState({ error });
     }
     finally {
@@ -62,6 +65,7 @@ export class App extends Component {
     }
   };
 
+
     handleGalleryItem = fullImageUrl => {
     this.setState({
       largeImage: fullImageUrl,
@@ -69,9 +73,12 @@ export class App extends Component {
     });
   };
 
-
-
-
+  toggleModal = () => {
+    this.setState(prevState => ({
+      showModal: !prevState.showModal,
+      largeImage: '',
+    }));
+  };
 
   scrollOnLoadButton = () => {
     window.scrollTo({
@@ -80,23 +87,44 @@ export class App extends Component {
     });
   };
 
-
   render() {
-    const { images, isLoading, largeImage, error } = this.state;
+    const { images, isLoading, showModal, largeImage, error } = this.state;
     const needShowLoadMore = images.length > 0 && images.length >= 12;
 
     return (
       <>
         <Searchbar onSearch={this.onChangeQuery} />
         <ImageGallery images={images} onImageClick={this.handleGalleryItem} />
-        {needShowLoadMore && <Button onClick={this.getImages}/>}
-        {/* <Modal /> */}
-        {/* <Loader /> */}
-        {/* <Button/> */}
-    </>
+        {needShowLoadMore && <Button onClick={this.getImages} />}
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <div className="Close-box">
+              <IconButton onClick={this.toggleModal} aria-label="Close modal">
+                <CloseIcon width="20px" height="20px" fill="#7e7b7b" />
+              </IconButton>
+            </div>
+
+            <img src={largeImage} alt="" className="Modal-image" />
+          </Modal>
+        )}
+
+        {isLoading && <Loader />}
+
+        {error && (
+          <Message>
+            <h2>Oops! 😯</h2>
+            <p>
+              Sorry, something went wrong. Please try again.
+              <a href="/">refresh the page</a>.
+            </p>
+          </Message>
+        )}
+      </>
     );
   };
 };
+
+export default App;
 
 
 // key=31642520-d6a6357411a55db3459510987

@@ -37,7 +37,7 @@ export class SearchForm extends Component {
     render() {
         return (
             <form className={styles.SearchForm} onSubmit={this.handleSubmit}>
-                <button type={styles['SearchForm-button']} className="button">
+                <button type="button" className={styles['SearchForm-button']}>
                     <span className={styles['SearchForm-button-label']}>Search</span>
                 </button>
 
