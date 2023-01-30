@@ -7,6 +7,11 @@ export class ImageGalleryItem extends Component {
     state = {
         shownModal: false,
     };
+
+    static propTypes = {
+        item: PropTypes.object.isRequired,
+    };
+    
     onModal = () => {
         this.setState(({ shownModal }) => ({ shownModal: !shownModal }));
     };
@@ -25,10 +30,6 @@ render() {
         </li>
     );
     };
-};
-
-ImageGalleryItem.propTypes = {
-    item: PropTypes.object,
 };
 
 export default ImageGalleryItem;

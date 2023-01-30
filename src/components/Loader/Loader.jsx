@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {TailSpin} from 'react-loader-spinner';
 import styles from './Loader.module.css';
 
-
-
 class Loader extends Component {
 render() {
     return (

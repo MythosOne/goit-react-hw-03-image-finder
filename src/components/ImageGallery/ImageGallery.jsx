@@ -13,10 +13,10 @@ function ImageGallery({ items }) {
             </ul>
         </>
     );
-}
+};
 
 export default ImageGallery;
 
 ImageGallery.propTypes = {
-    items: PropTypes.array,
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

@@ -6,6 +6,11 @@ import styles from './Modal.module.css';
 const ModalRoot = document.querySelector('#ModalRoot');
 
 class Modal extends Component {
+
+    static propTypes = {
+        image: PropTypes.object,
+        onClose: PropTypes.func,
+    };
     componentDidMount() {
         window.addEventListener('keydown', this.keyDown);
     };
@@ -35,13 +40,8 @@ render() {
             </div>
         </div>,
         ModalRoot
-    );
+        );
     };
 };
 
 export default Modal;
-
-Modal.propTypes = {
-    image: PropTypes.object,
-    onClose: PropTypes.func,
-};
