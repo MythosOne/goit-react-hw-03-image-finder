@@ -48,7 +48,6 @@ export class App extends Component {
     render() {
       const { items, totalHits, isLoading } = this.state;
       return (
-        <>
           <div className= {styles.App}>
         <Searchbar onSubmit={this.handleSubmit} />
             <ImageGallery items={items} />
@@ -56,7 +55,6 @@ export class App extends Component {
             {totalHits > 12 && totalHits > items.length && 
               (<Button onClick={this.oneNextPage} />)}
           </div>
-      </>
       )
   };
 };
