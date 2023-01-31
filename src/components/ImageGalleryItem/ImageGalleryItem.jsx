@@ -9,8 +9,11 @@ export class ImageGalleryItem extends Component {
     };
 
     static propTypes = {
-        item: PropTypes.object.isRequired,
-    };
+    item: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        webformatURL: PropTypes.string.isRequired,
+    }),
+};
     
     onModal = () => {
         this.setState(({ shownModal }) => ({ shownModal: !shownModal }));

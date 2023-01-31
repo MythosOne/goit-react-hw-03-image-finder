@@ -8,9 +8,13 @@ const ModalRoot = document.querySelector('#ModalRoot');
 class Modal extends Component {
 
     static propTypes = {
-        image: PropTypes.object,
-        onClose: PropTypes.func,
-    }.isRequired;
+        image: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            webformatURL: PropTypes.string.isRequired,
+        }),
+        onClose: PropTypes.func.isRequired,
+    };
+    
     componentDidMount() {
         window.addEventListener('keydown', this.keyDown);
     };
