@@ -17,6 +17,3 @@ export async function apiService(inputData, page) {
 }
 
 export default apiService;
-
-//key=31642520-d6a6357411a55db3459510987
-// https://pixabay.com/api/?q=cat&page=1&key=31642520-d6a6357411a55db3459510987&image_type=photo&orientation=horizontal&per_page=12

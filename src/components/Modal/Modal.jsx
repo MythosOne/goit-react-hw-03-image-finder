@@ -10,7 +10,7 @@ class Modal extends Component {
     static propTypes = {
         image: PropTypes.object,
         onClose: PropTypes.func,
-    };
+    }.isRequired;
     componentDidMount() {
         window.addEventListener('keydown', this.keyDown);
     };

@@ -15,6 +15,7 @@ export class ImageGalleryItem extends Component {
     onModal = () => {
         this.setState(({ shownModal }) => ({ shownModal: !shownModal }));
     };
+
 render() {
     const { item } = this.props;
     const { webformatURL } = item;
